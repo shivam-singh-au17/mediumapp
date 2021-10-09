@@ -10,12 +10,29 @@ app.use(require("./routes/blogsdata"));
 const dbo = require("./db/conn");
 
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static("client/build"));
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', "index.html"));
-  })
+const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://shrouded-journey-38552.heroku...']
+  
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
+
+
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 }
 
 
