@@ -18,7 +18,7 @@ const ShowBlog = () => {
   // const history = useHistory();
 
   function getUsersDetailes() {
-    fetch(`http://localhost:5000/blogsdata/${userId}`)
+    fetch(`https://mediumbackenddata.herokuapp.com/blogsdata/${userId}`)
       .then((data) => data.json())
       .then((data) => {
         setUsers(data);

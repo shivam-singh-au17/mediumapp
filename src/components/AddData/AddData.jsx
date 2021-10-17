@@ -69,7 +69,7 @@ export default class AddData extends Component {
     };
 
     axios
-      .post("http://localhost:5000/blogsdata/add", newperson)
+      .post("https://mediumbackenddata.herokuapp.com/blogsdata/add", newperson)
       .then((res) => console.log(res.data));
 
     // this.setState({

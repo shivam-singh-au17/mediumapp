@@ -11,9 +11,11 @@ export const Recommended = () => {
   const { handleChangeTheme } = useContext(ThemeContexts);
 
   function getMyTodos() {
-    axios.get(`http://localhost:5000/blogsdata/`).then((res) => {
-      setAddTask(res.data);
-    });
+    axios
+      .get(`https://mediumbackenddata.herokuapp.com/blogsdata/`)
+      .then((res) => {
+        setAddTask(res.data);
+      });
   }
 
   useEffect(() => {
