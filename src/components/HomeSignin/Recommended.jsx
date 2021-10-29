@@ -5,17 +5,16 @@ import { useContext } from "react";
 import { ThemeContexts } from "../../Contexts/ThemeContexts";
 import save from "../Image/save.svg";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../env";
 
 export const Recommended = () => {
   const [addTask, setAddTask] = useState([]);
   const { handleChangeTheme } = useContext(ThemeContexts);
 
   function getMyTodos() {
-    axios
-      .get(`https://mediumbackenddata.herokuapp.com/blogsdata/`)
-      .then((res) => {
-        setAddTask(res.data);
-      });
+    axios.get(`${BASE_URL}`).then((res) => {
+      setAddTask(res.data);
+    });
   }
 
   useEffect(() => {
