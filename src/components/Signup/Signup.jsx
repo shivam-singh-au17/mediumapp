@@ -16,8 +16,7 @@ export const Signup = () => {
   const responseGoogle = (response) => {
     var res = response.profileObj;
     // console.log(res);
-    const type = typeof res;
-    if (type === `object`) {
+    if (auth === "authorization") {
       setIsAuth(false);
     }
   };
