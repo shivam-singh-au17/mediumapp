@@ -3,16 +3,15 @@ import "./StoryPre.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../env";
 
 export const StoryPre = () => {
   const [addTask, setAddTask] = useState([]);
 
   function getMyTodos() {
-    axios
-      .get(`https://mediumbackenddata.herokuapp.com/blogsdata/`)
-      .then((res) => {
-        setAddTask(res.data);
-      });
+    axios.get(`${BASE_URL}`).then((res) => {
+      setAddTask(res.data);
+    });
   }
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export const StoryPre = () => {
   }, []);
 
   const len = addTask.length - 1;
-  console.log('len:', len)
+  console.log("len:", len);
 
   return (
     <div className="story">
@@ -61,7 +60,7 @@ export const StoryPre = () => {
                 Add or change tags (up to 5) so readers know what your story is
                 about
               </p>
-              
+
               <input type="text" placeholder="Add a tag..." />
               <p>
                 In order to make your story eligible to earn as part of Medium’s
