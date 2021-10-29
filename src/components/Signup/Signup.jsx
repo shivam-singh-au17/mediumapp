@@ -14,9 +14,10 @@ export const Signup = () => {
   const { handleChangeTheme } = useContext(ThemeContexts);
 
   const responseGoogle = (response) => {
-    // var res = response.profileObj;
+    var res = response.profileObj;
     // console.log(res);
-    if (auth === "authorization") {
+    const type = typeof res;
+    if (type === `object`) {
       setIsAuth(false);
     }
   };
