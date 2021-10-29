@@ -7,15 +7,16 @@ import plus2 from "../Image/plus2.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContexts } from "../../Contexts/ThemeContexts";
+import { auth } from "../../env";
 
 export const Signup = () => {
   const [isAuth, setIsAuth] = React.useState(true);
   const { handleChangeTheme } = useContext(ThemeContexts);
 
   const responseGoogle = (response) => {
-    var res = response.profileObj;
+    // var res = response.profileObj;
     // console.log(res);
-    if (res.googleId.length === 21) {
+    if (auth === "authorization") {
       setIsAuth(false);
     }
   };
